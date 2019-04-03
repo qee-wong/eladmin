@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiangxun.AnnualMeeting.mapper.UserInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.xiangxun.AnnualMeeting.bean.UserInfo" >
+        <id column="id" property="id" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="avatarUrl" property="avatarUrl" jdbcType="VARCHAR" />
+        <result column="dengji" property="dengji" jdbcType="VARCHAR" />
+        <result column="biaoji" property="biaoji" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        id, name, phone,avatarUrl
+        from user_test
+        order by id asc
+    </select>
+
+    <insert id="addUser" parameterType="com.xiangxun.AnnualMeeting.bean.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user_test` (employeeid,phone,name,sign,nickName,avatarUrl,gender,openId,updatetime,signMessage)VALUES
+         (#{employeeid},#{phone},#{name},#{sign},#{name},#{avatarUrl},#{gender},#{openId},now(),#{signMessage});
+    </insert>
+
+    <select id="getSignByuserId" parameterType="java.lang.String" resultType="com.xiangxun.AnnualMeeting.bean.UserInfo">
+        select * FROM  user_test where openId = #{value} limit 1
+    </select>
+
+    <select id="getLeftPerson" resultType="java.lang.Integer" >
+        select id from user_test where biaoji = '0'
+    </select>
+
+    <select id="getDengjiPerson" parameterType="java.lang.String" resultType="java.lang.Integer" >
+        select id from user_test where biaoji = '0' and dengji = #{VALUE}
+    </select>
+
+    <update id="saveTheData" parameterType="java.util.Map" >
+        update user_test set biaoji = '1',dengji = #{dengji} WHERE id in
+        <foreach collection="list" open="(" separator="," close=")" item="var">
+            #{var}
+        </foreach>
+    </update>
+
+    <select id="getAllUserInfoByConditation" parameterType="java.lang.String" resultType="com.xiangxun.AnnualMeeting.bean.UserInfo">
+        select
+        id, name, phone,avatarUrl,biaoji,dengji
+        from user_test WHERE name LIKE '%${value}%'
+        order by id asc
+
+    </select>
+
+    <update id="sedengji" parameterType="java.util.Map" >
+        UPDATE user_test set dengji = #{dengji} WHERE id=#{id}
+    </update>
+
+    <update id="chongzhi" >
+        UPDATE user_test set dengji = '0' , biaoji = '0'
+    </update>
+
+    <select id="getAllPersonInfoByConditation" resultType="com.xiangxun.AnnualMeeting.bean.UserInfo">
+        select
+        id, name, phone,avatarUrl,biaoji,dengji
+        from user_test WHERE biaoji = '1'
+        order by id asc
+    </select>
+
+</mapper>

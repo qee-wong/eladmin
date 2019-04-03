@@ -35,6 +35,11 @@
             <version>1.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>eladmin-weixin</artifactId>
+            <version>1.5</version>
+        </dependency>
         <!--jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -71,4 +76,5 @@
             </plugin>
         </plugins>
     </build>
+    
 </project>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>签到</title>
+    <script  type="text/javascript" src="http://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
+
+</head>
+<body>
+<div id="qrcode" class="qrcode" >
+
+</div>
+
+</body>
+<script type="text/javascript" >
+    //console.log(11);
+    (function(){
+        window.WwLogin({
+            "id" : "qrcode",
+            "appid" : "wxd8e1553bebc70ee8",
+            "agentid" : "1000014",
+            "redirect_uri" :"http%3A%2F%2F127.0.0.1%3A8000%2Ftologin",
+            "state" : "sessionid",
+            "href" : "",
+        });
+    })();
+</script>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>获奖名单</title>
+    <!-- set `maximum-scale` for some compatibility issues -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <!--<link crossorigin rel="stylesheet" href="https://unpkg.com/antd@3.9.3/dist/antd.min.css">-->
+    <link crossorigin rel="stylesheet" href="css/antd.min.css">
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script crossorigin  src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    <script crossorigin  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <!--<script crossorigin  src="https://unpkg.com/antd@3.9.3/dist/antd.min.js"></script>-->
+    <script crossorigin  src="js/antd.min.js"></script>
+</head>
+<style>
+    .head{
+        text-align: center;
+        color: yellow;
+        font-size: 1.5rem;
+        background-color: #dc0808;
+    }
+    .footer{
+        text-align: center;
+        color: black;
+    }
+</style>
+<body>
+<script th:inline="javascript">
+    const personlist = JSON.parse([[${list}]]);
+</script>
+<script type="text/babel">
+
+    function callback(key) {
+        console.log(key);
+    }
+
+
+    const numbers = [1, 2, 3, 4, 5];
+
+    const listItems = personlist.map((person,i) =>
+        {
+            if(person.dengji == 1)
+                return <li key={i}>{person.name},电话：{person.phone}</li>
+        }
+    );
+    const listItems2 = personlist.map((person,i) =>
+        {
+            if(person.dengji == 2)
+                return <li key={i}>{person.name},电话：{person.phone}</li>
+        }
+    );
+    const listItems3 = personlist.map((person,i) =>
+        {
+            if(person.dengji == 3)
+                return <li key={i}>{person.name},电话：{person.phone}</li>
+        }
+    );
+
+    const listItems11 = personlist.filter((person,i) =>
+        {
+            if(person.dengji == 1 && person.biaoji == 1)
+                return person;
+        }
+    );
+    const listItems22 = personlist.filter((person,i) =>
+        {
+            if(person.dengji == 2 && person.biaoji == 1)
+                return person;
+        }
+    );
+    const listItems33 = personlist.filter((person,i) =>
+        {
+            if(person.dengji == 3 && person.biaoji == 1)
+                return person;
+        }
+    );
+    function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+    }
+    ReactDOM.render(
+        <div>
+            <antd.Layout>
+                <antd.Layout.Header className="head">获奖名单</antd.Layout.Header>
+                <antd.Layout.Content>
+                    <antd.Tabs defaultActiveKey="1" onChange={callback}>
+                        <antd.Tabs.TabPane tab="三等奖" key="1">
+                            <antd.List
+                                itemLayout="horizontal"
+                                footer={<div></div>}
+                                bordered
+                                dataSource={listItems33}
+                                renderItem={(item) =>  (
+//                                    <antd.List.Item>{item.phone}：{item.name}</antd.List.Item>
+                                    <antd.List.Item>
+                                        <antd.List.Item.Meta
+                                            avatar={<antd.Avatar src={item.avatarUrl} />}
+                                            title={item.name}
+                                            description={item.phone}
+                                        />
+                                    </antd.List.Item>
+
+                                )}
+                            />
+                        </antd.Tabs.TabPane>
+                        <antd.Tabs.TabPane tab="二等奖" key="2">
+                            <antd.List
+                                itemLayout="horizontal"
+                                footer={<div></div>}
+                                bordered
+                                dataSource={listItems22}
+                                renderItem={(item) =>  (
+//                                    <antd.List.Item>{item.phone}：{item.name}</antd.List.Item>
+                                    <antd.List.Item>
+                                        <antd.List.Item.Meta
+                                            avatar={<antd.Avatar src={item.avatarUrl} />}
+                                            title={item.name}
+                                            description={item.phone}
+                                        />
+                                    </antd.List.Item>
+
+                                )}
+                            />
+                        </antd.Tabs.TabPane>
+                        <antd.Tabs.TabPane tab="一等奖" key="3">
+                            <antd.List
+                                itemLayout="horizontal"
+                                footer={<div></div>}
+                                bordered
+                                dataSource={listItems11}
+                                renderItem={(item) =>  (
+//                                    <antd.List.Item>{item.phone}：{item.name}</antd.List.Item>
+                                    <antd.List.Item>
+                                    <antd.List.Item.Meta
+                                    avatar={<antd.Avatar src={item.avatarUrl} />}
+                                    title={item.name}
+                                    description={item.phone}
+                                    />
+                                    </antd.List.Item>
+
+                                )}
+                            />
+                        </antd.Tabs.TabPane>
+                    </antd.Tabs>
+                </antd.Layout.Content>
+                <antd.Layout.Footer className="footer">&copy; 2018-2019西安翔迅科技</antd.Layout.Footer>
+            </antd.Layout>
+        </div>,
+        document.getElementById("app")
+    )
+
+
+</script>
+<div id="app"></div>
+</body>
+
+</html>

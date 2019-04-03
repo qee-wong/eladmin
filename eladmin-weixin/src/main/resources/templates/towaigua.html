@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script  type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<form id="subform" >
+    <input type="text" id="name" name="name" />
+    <input id="so" type="button" value="so" />
+</form>
+<div id="retdiv">
+
+</div>
+</body>
+<script type="text/javascript" >
+    $('#so').bind('click',function () {
+        $.ajax({
+            url: '/waigua',
+            type: "post",
+            data: $('#subform').serialize(),
+            dataType: 'html',
+            success: function (html) {
+                $('#retdiv').html(html);
+            }
+        })
+    })
+</script>
+</html>

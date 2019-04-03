@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>签到</title>
+    <script  type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script  type="text/javascript" src="../js/utf.js"></script>
+    <script  type="text/javascript" src="../js/jquery.qrcode2.0.js"></script>
+    <script  type="text/javascript" src="../js/qrcode.js"></script>
+
+</head>
+<body>
+<div id="qrcode" class="qrcode" >
+
+</div>
+
+</body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $('#qrcode').qrcode(
+        {
+            render : "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
+            text : [[${qcode}]],    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
+            width : "200",               //二维码的宽度
+            height : "200",              //二维码的高度
+            background : "#ffffff",       //二维码的后景色
+            foreground : "#000000",        //二维码的前景色
+            src: '../img/o_photo.jpg'
+        }
+        );
+    //{text	: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd8e1553bebc70ee8&redirect_uri=http%3A%2F%2F127.0.0.1%2Ftologin&response_type=code&scope=snsapi_base&state=#wechat_redirect"};
+    /*]]>*/
+</script>
+</html>

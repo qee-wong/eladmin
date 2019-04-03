@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="qw">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>年会签到</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script  type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script  type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .font1 {
+            color: transparent;
+            -webkit-text-stroke: 1px red;
+            letter-spacing: 0.04em;
+        }
+
+        .font2 {
+            background: #EEE url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHklEQVQImWNkYGBgYGD4//8/A5wF5SBYyAr+//8PAPOCFO0Q2zq7AAAAAElFTkSuQmCC) repeat;
+            text-shadow: 5px -5px black, 4px -4px white;
+            font-weight: bold;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text
+        }
+
+        .font3 {
+            font-family: cursive;
+            color: gold;
+            letter-spacing: 0;
+            text-shadow: 0px 1px 0px #999, 2px 5px 7px #001135
+        }
+
+        .font4 {
+            font-family: cursive;
+            text-shadow: 3px 3px 5px #333;
+            color: deeppink
+        }
+        .h1{
+            animation: layerize cubic-bezier(0.4, 0, 0.2, 1) 1200ms 200ms forwards;
+        }
+        @keyframes layerize {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0);
+                text-shadow: none;
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-0.06667em, -0.06667em);
+                text-shadow: 0 0 transparent, 0.03333em 0.03333em rgba(1, 1, 1, 0.4), 0.06667em 0.06667em rgba(0, 0, 0, 0.3), 0.1em 0.1em rgba(0, 0, 0, 0.2), 0.13333em 0.13333em rgba(0, 0, 0, 0.1);
+            }
+        }
+        .sy{
+            -webkit-animation:slide 0.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy2{
+            -webkit-animation:slide 1.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy3{
+            -webkit-animation:slide 3.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy4{
+            -webkit-animation:slide 4.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy5{
+            -webkit-animation:slide 4.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy6{
+            -webkit-animation:slide 4.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        .sy7{
+            -webkit-animation:slide 5.8s ease-in;
+            -webkit-animation-fill-mode:forwards;
+            -moz-animation:slide .8s ease-in;
+            -moz-animation-fill-mode:forwards;
+        }
+        @-webkit-keyframes slide{
+            0%   { right:410px; opacity:0;}
+            70%  { right:0;opacity:0.7}
+            100% { opacity:1;right:85px;}
+        }
+        @-moz-keyframes slide{
+            0%   { right:410px; opacity:0;}
+            70%  { right:0;opacity:0.7}
+            100% { opacity:1;right:85px;}
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../css/floating-labels.css" rel="stylesheet">
+</head>
+<!--<body  class="bg-danger">-->
+<body style="background: url(../img/top.png) center top / 100% no-repeat;">
+<div class="container form-signin" style="background: url(../img/topbg.png);background-repeat: repeat;">
+    <form id="formLogin" class="form-signin" >
+        <input id="openId" name="openId" type="hidden" th:value="${wxCpUser.userId}" />
+        <input id="nickName" name="name" type="hidden" th:value="${wxCpUser.name}" />
+        <input id="avatarUrl" name="avatarUrl" type="hidden" th:value="${wxCpUser.avatar}" />
+        <input name="phone" type="hidden" th:value="${wxCpUser.mobile}" />
+        <input name="employeeid" type="hidden" th:value="${departIds}" />
+        <input name="gender" type="hidden" th:value="${gender}" />
+
+        <div class="text-center mb-4">
+            <!--<img class="mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+            <h1 class="h3 mb-3 font-weight-normal text-warning sy">欢迎</h1>
+            <h1 class="h3 mb-3 font-weight-normal text-warning sy">西安翔迅年会</h1>
+            <p class="text-black sy2">岁月不居，时光如流，携手共进2019</p>
+        </div>
+        <div class="text-center">
+            <img  th:src="${wxCpUser.avatar}" class="img-thumbnail rounded-circle sy3" alt="...">
+        </div>
+        <br />
+        <div class="text-center">
+            <h1 th:text="${wxCpUser.name}" class="text-center font-weight-light text-danger font4 sy4" />
+        </div>
+        <br />
+        <div class="text-center" style="display: none;">
+            <p th:if="${wxCpUser.gender.toString()} eq 'FEMALE'" th:text="女" class="font-weight-light" />
+            <p th:if="${wxCpUser.gender.toString()} eq 'MALE'" th:text="男" class="font-weight-light" />
+        </div>
+
+        <div th:if=" ${sign} eq '0'" class="sy5">
+            <div class="form-label-group ">
+                <input type="text" id="signMessage" name="signMessage" class="form-control" placeholder="签到！" required>
+                <label for="signMessage">欢迎留言</label>
+            </div>
+
+            <button id="sign" class="btn btn-lg btn-danger btn-block sy6" type="button">签到</button>
+        </div>
+        <div th:if=" ${sign} eq '1'" class="sy5">
+            <div class="text-center sy6">
+                <h1 th:text="已签到" class="text-center font-weight-light" />
+            </div>
+            <div class="form-label-group ">
+                <input type="text" id="signMessage" name="signMessage" class="form-control" placeholder="签到！" th:value="${userInfo.signMessage}">
+                <label for="signMessage">留言如下：</label>
+            </div>
+
+            <button id="message" class="btn btn-lg btn-danger btn-block sy6" type="button" onclick="foo(this, 10000);">留言</button>
+            <div class="alert alert-primary" role="alert" style="margin-top: 20px;text-align: center;display: none;">
+                已提交!
+            </div>
+            <br />
+            <p style="text-align: center;"><a href="/personlist" class="text-danger" >获奖名单</a></p>
+        </div>
+
+
+        <br />
+        <p class="text-center text-dark sy7">&copy; 2018-2019西安翔迅科技</p>
+    </form>
+</div>
+
+    <!-- 按钮：用于打开模态框 -->
+    <input type="hidden" id="dail" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    </input>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">已签到</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    岁月不居，时光如流，我们携手共进2019...
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" >
+    $(function(){
+        websocket = new WebSocket('ws://avic.631xiangxun.com:10000');
+        $('#sign').bind('click',function(){
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data: $('#formLogin').serialize(),
+                dataType: "json",
+                success: function (data) {
+//                console.log(data);
+                    $('#dail').click();
+                    $('#sign').remove();
+                    websocket.send(JSON.stringify({
+                        nickName: $('#nickName').val(),
+                        type: 'text',
+                        userId: $('#openId').val(),
+                        avatarUrl: $('#avatarUrl').val(),
+                        content: ($('#signMessage').val()=='' ? '签到！' : $('#signMessage').val())
+                    }));
+                }
+            })
+        });
+
+        $('#message').bind('click',function(){
+            websocket.send(JSON.stringify({
+                nickName: $('#nickName').val(),
+                type: 'text',
+                userId: $('#openId').val(),
+                avatarUrl: $('#avatarUrl').val(),
+                content: $('#signMessage').val()
+            }));
+
+
+        });
+
+
+    });
+    function foo(obj, time) {
+        obj.disabled = true;
+        $('#message').css('background-color','#ff8c97');
+        $('.alert').fadeIn();
+        setTimeout(function() {
+            var x = setInterval(function(){
+                time= time - 1000; //reduce each second
+                obj.value = (time/1000)%60;
+                if(time==0){
+                    clearInterval(x);
+                    obj.value = "留言";
+                    obj.disabled = false;
+                    $('#message').css('background-color','#c82333');
+                    $('.alert').fadeOut();
+                }
+            }, 1000);
+        }, time-10000);
+    }
+</script>
+</html>

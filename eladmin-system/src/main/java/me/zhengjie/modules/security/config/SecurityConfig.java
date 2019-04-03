@@ -88,7 +88,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/*.html",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        "/**/*.txt",
+                        "/**/*.jpg"
                 ).permitAll()
 
                 .antMatchers( HttpMethod.POST,"/auth/"+loginPath).permitAll()
@@ -109,7 +111,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 接口限流测试
                 .antMatchers("/test/**").anonymous()
                 .antMatchers(HttpMethod.OPTIONS, "/**").anonymous()
-
+                //新增微信api验证
+                .antMatchers("/page").anonymous()
+                .antMatchers("/jspapi/**").anonymous()
                 // 所有请求都需要认证
                 .anyRequest().authenticated();
 

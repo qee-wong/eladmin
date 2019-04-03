@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>list</title>
+</head>
+<body>
+
+<table>
+<tr th:each="data : ${list}">
+    <td th:text="${data.name}">name</td>
+    <td th:text="${data.dengji}">2.41</td>
+    <td th:text="${data.biaoji}">yes</td>
+    <td >
+        <select th:id="|dengji${data.id}|">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </td>
+    <td>
+        <!--<input type="button" id="dengji" onclick="sedengji([[${data.id}]],[[${data.dengji}]])">-->
+        <input type="button" id="dengji" value="set" th:onclick="|javascript:sedengji(${data.id},${data.dengji})|"  />
+    </td>
+</tr>
+</table>
+
+</body>
+<script type="text/javascript" >
+    function sedengji(id,dengji){
+
+        $.ajax({
+            url: '/sedengji',
+            type: 'post',
+            data: {id:id,dengji: $('#dengji'+id).val()},
+            dataType: 'text',
+            success: function(msg){
+                if(msg==1) alert('ok');
+                if(msg!= ''){
+                    window.location.reload();
+                }
+
+            }
+        })
+    }
+</script>
+</html>

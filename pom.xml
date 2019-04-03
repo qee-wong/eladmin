@@ -14,6 +14,7 @@
         <module>eladmin-logging</module>
         <module>eladmin-system</module>
         <module>eladmin-tools</module>
+        <module>eladmin-weixin</module>
         <module>eladmin-generator</module>
     </modules>
 
