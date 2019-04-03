@@ -2,6 +2,7 @@ package me.zhengjie.modules.system.domain.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import java.io.Serializable;
 
 /**
  * @author jie
@@ -9,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class MenuMetaVo {
+public class MenuMetaVo implements Serializable {
 
     private String title;
 

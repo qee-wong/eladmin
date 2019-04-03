@@ -109,7 +109,7 @@ eladmin-qt和eladmin-qd只是命名方式的区别，无其他区别
         <td><img src="https://i.loli.net/2018/12/22/5c1e10c7890ab.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://i.loli.net/2018/12/22/5c1e10c782a05.png"/></td>
+        <td><img src="https://i.loli.net/2019/02/28/5c7795b707347.png"/></td>
         <td><img src="https://i.loli.net/2018/12/22/5c1e10c7b089b.png"/></td>
     </tr>
     <tr>
@@ -125,8 +125,16 @@ eladmin-qt和eladmin-qd只是命名方式的区别，无其他区别
     </tr>
 </table>
 
+#### 项目捐赠
+
+> Donate
+> 
+> 项目的发展离不开你的支持，请作者喝杯咖啡吧☕！
+
+|   微信  |   支付宝  |
+|--- | --- |
+|  ![](https://i.loli.net/2019/03/28/5c9c951c61a9a.png)   |  ![](https://i.loli.net/2019/03/28/5c9c95355fecb.png)  |
+
 #### 反馈交流
 
-- QQ交流群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=90830191a40600e3a07acdcc4864890fca50c8e3ca1772e7e288a561d576f6c4"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Quella/el-admin" title="Quella/el-admin"></a>
-
-- 作者邮箱：elunez@qq.com
+- QQ交流群：891137268

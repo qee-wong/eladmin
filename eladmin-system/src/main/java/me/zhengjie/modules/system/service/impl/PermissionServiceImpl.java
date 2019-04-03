@@ -47,17 +47,11 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(Permission resources) {
+
         Optional<Permission> optionalPermission = permissionRepository.findById(resources.getId());
         ValidationUtil.isNull(optionalPermission,"Permission","id",resources.getId());
 
         Permission permission = optionalPermission.get();
-
-        /**
-         * 根据实际需求修改
-         */
-        if(permission.getId().equals(1L)){
-            throw new BadRequestException("该权限不能被修改");
-        }
 
         Permission permission1 = permissionRepository.findByName(resources.getName());
 
@@ -74,12 +68,6 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void delete(Long id) {
-        /**
-         * 根据实际需求修改
-         */
-        if(id.equals(1L)){
-            throw new BadRequestException("该权限不能被删除");
-        }
         List<Permission> permissionList = permissionRepository.findByPid(id);
         for (Permission permission : permissionList) {
             permissionRepository.delete(permission);
