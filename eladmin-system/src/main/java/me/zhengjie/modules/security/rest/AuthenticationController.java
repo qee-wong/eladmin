@@ -2,11 +2,14 @@ package me.zhengjie.modules.security.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.aop.log.Log;
-import me.zhengjie.modules.security.security.AuthenticationInfo;
+
 import me.zhengjie.modules.security.security.AuthorizationUser;
-import me.zhengjie.modules.security.security.JwtUser;
+
+import me.zhengjie.security.AuthenticationInfo;
+import me.zhengjie.security.JwtUser;
+import me.zhengjie.security.util.JwtTokenUtil;
 import me.zhengjie.utils.EncryptUtils;
-import me.zhengjie.modules.security.utils.JwtTokenUtil;
+
 import me.zhengjie.utils.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

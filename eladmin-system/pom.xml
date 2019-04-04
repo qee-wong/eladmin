@@ -12,7 +12,7 @@
     <artifactId>eladmin-system</artifactId>
 
     <properties>
-        <jjwt.version>0.9.1</jjwt.version>
+
     </properties>
 
     <dependencies>
@@ -40,12 +40,7 @@
             <artifactId>eladmin-weixin</artifactId>
             <version>1.5</version>
         </dependency>
-        <!--jwt-->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jjwt.version}</version>
-        </dependency>
+
 
         <!--websocket-->
         <dependency>

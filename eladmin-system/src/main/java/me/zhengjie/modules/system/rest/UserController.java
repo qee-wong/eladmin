@@ -5,12 +5,14 @@ import me.zhengjie.domain.Picture;
 import me.zhengjie.domain.VerificationCode;
 import me.zhengjie.modules.system.domain.User;
 import me.zhengjie.exception.BadRequestException;
-import me.zhengjie.modules.security.security.JwtUser;
+
+import me.zhengjie.security.JwtUser;
+import me.zhengjie.security.util.JwtTokenUtil;
 import me.zhengjie.service.PictureService;
 import me.zhengjie.service.VerificationCodeService;
 import me.zhengjie.utils.ElAdminConstant;
 import me.zhengjie.utils.EncryptUtils;
-import me.zhengjie.modules.security.utils.JwtTokenUtil;
+
 import me.zhengjie.modules.system.service.UserService;
 import me.zhengjie.modules.system.service.dto.UserDTO;
 import me.zhengjie.modules.system.service.query.UserQueryService;

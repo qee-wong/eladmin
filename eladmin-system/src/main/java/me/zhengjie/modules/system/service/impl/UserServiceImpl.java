@@ -5,11 +5,12 @@ import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.exception.EntityExistException;
 import me.zhengjie.exception.EntityNotFoundException;
 import me.zhengjie.modules.system.repository.UserRepository;
-import me.zhengjie.modules.security.security.JwtUser;
-import me.zhengjie.modules.security.utils.JwtTokenUtil;
+
 import me.zhengjie.modules.system.service.UserService;
 import me.zhengjie.modules.system.service.dto.UserDTO;
 import me.zhengjie.modules.system.service.mapper.UserMapper;
+import me.zhengjie.security.JwtUser;
+import me.zhengjie.security.util.JwtTokenUtil;
 import me.zhengjie.utils.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

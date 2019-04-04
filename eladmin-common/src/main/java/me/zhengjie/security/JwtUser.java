@@ -1,10 +1,11 @@
-package me.zhengjie.modules.security.security;
+package me.zhengjie.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;

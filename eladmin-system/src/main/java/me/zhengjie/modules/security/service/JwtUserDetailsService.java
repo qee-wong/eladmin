@@ -7,7 +7,8 @@ import me.zhengjie.exception.EntityNotFoundException;
 import me.zhengjie.modules.system.repository.PermissionRepository;
 import me.zhengjie.modules.system.repository.RoleRepository;
 import me.zhengjie.modules.system.repository.UserRepository;
-import me.zhengjie.modules.security.security.JwtUser;
+
+import me.zhengjie.security.JwtUser;
 import me.zhengjie.utils.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
