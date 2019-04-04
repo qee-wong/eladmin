@@ -12,6 +12,7 @@ import org.mybatis.spring.annotation.MapperScan;
  * @author jie
  * @date 2018/11/15 9:20:19
  */
+//@SpringBootApplication //写在同一个me.zhengjie的包名下可以识别写在其他包名下需手动指向
 @SpringBootApplication(scanBasePackages={"com","me.zhengjie"})
 @MapperScan("com.xiangxun.*.mapper")
 @EnableTransactionManagement

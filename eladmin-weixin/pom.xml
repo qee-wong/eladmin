@@ -25,6 +25,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>eladmin-logging</artifactId>
+            <version>1.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-cp</artifactId>
             <version>${weixin-java-cp.version}</version>

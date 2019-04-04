@@ -138,3 +138,12 @@ eladmin-qt和eladmin-qd只是命名方式的区别，无其他区别
 #### 反馈交流
 
 - QQ交流群：891137268
+
+### 问题 
+- SpringBootApplication bean注入问题。
+- 生成代码后需配置RedisConfig
+```
+ParserConfig.getGlobalInstance().addAccept("me.zhengjie.modules.test.service.dto");
+ParserConfig.getGlobalInstance().addAccept("me.zhengjie.modules.test.domain");
+```
+- 前端rules问题
