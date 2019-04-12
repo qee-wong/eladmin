@@ -1,5 +1,6 @@
 package me.zhengjie.modules.security.service;
 
+import me.chanjar.weixin.cp.bean.WxCpUser;
 import me.zhengjie.modules.system.domain.Permission;
 import me.zhengjie.modules.system.domain.Role;
 import me.zhengjie.modules.system.domain.User;

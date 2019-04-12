@@ -32,14 +32,14 @@ public class UserTestController {
 
     @Log("查询UserTest")
     @GetMapping(value = "/userTest")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','WEIXIN_ALL')")
     public ResponseEntity getUserTests(UserTestDTO resources, Pageable pageable){
         return new ResponseEntity(userTestQueryService.queryAll(resources,pageable),HttpStatus.OK);
     }
 
     @Log("新增UserTest")
     @PostMapping(value = "/userTest")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','WEIXIN_ALL')")
     public ResponseEntity create(@Validated @RequestBody UserTest resources){
         if (resources.getId() != null) {
             throw new BadRequestException("A new "+ ENTITY_NAME +" cannot already have an ID");
@@ -49,7 +49,7 @@ public class UserTestController {
 
     @Log("修改UserTest")
     @PutMapping(value = "/userTest")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','WEIXIN_ALL')")
     public ResponseEntity update(@Validated @RequestBody UserTest resources){
         if (resources.getId() == null) {
             throw new BadRequestException(ENTITY_NAME +" ID Can not be empty");
@@ -60,7 +60,7 @@ public class UserTestController {
 
     @Log("删除UserTest")
     @DeleteMapping(value = "/userTest/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','WEIXIN_ALL')")
     public ResponseEntity delete(@PathVariable Integer id){
         userTestService.delete(id);
         return new ResponseEntity(HttpStatus.OK);

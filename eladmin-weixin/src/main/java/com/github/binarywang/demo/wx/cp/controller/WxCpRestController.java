@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -29,6 +31,7 @@ public class WxCpRestController
 {
     @Autowired
     private UserService userService;
+
     @Autowired
     @Qualifier("jwtUserDetailsService")
     private UserDetailsService userDetailsService;
@@ -63,22 +66,37 @@ public class WxCpRestController
 //        List<UserInfo> list = new ArrayList();
 //        list = this.userService.getAllPersonInfoByConditation();
         String code = req.getParameter("code");
+        String userId = req.getParameter("userId");
         if(code !=null)
             System.out.printf(code);
         WxCpUser wxCpUser = new WxCpUser();
         final WxCpService wxCpService = WxCpConfiguration.getCpService(agentId);
         WxJsapiSignature wxJsapiSignature = null;
         try {
-            String[] data = wxCpService.getOauth2Service().getUserInfo(code);
-            wxCpUser = wxCpService.getUserService().getById(data[0]);
+            if(code !=null) {
+                String[] data = wxCpService.getOauth2Service().getUserInfo(code);
+                wxCpUser = wxCpService.getUserService().getById(data[0]);
+            }
+            if(userId != null){
+                wxCpUser = wxCpService.getUserService().getById(userId);
+            }
+
         } catch (WxErrorException e) {
             e.printStackTrace();
         }
-        final JwtUser jwtUser = (JwtUser) userDetailsService.loadUserByUsername(wxCpUser.getUserId());
-        // 生成令牌
-        final String token = jwtTokenUtil.generateToken(jwtUser);
 
-        // 返回 token
-        return ResponseEntity.ok(new AuthenticationInfo(token,jwtUser));
+        try {
+            final JwtUser jwtUser = (JwtUser) userDetailsService.loadUserByUsername(wxCpUser.getUserId());
+            // 生成令牌
+            final String token = jwtTokenUtil.generateToken(jwtUser);
+            // 返回 token
+            return ResponseEntity.ok(new AuthenticationInfo(token,jwtUser));
+        }catch (Exception jwtUser){
+            Map data  = new HashMap<String, Object>();
+            data.put("token","no_token");
+            data.put("user",wxCpUser);
+            return ResponseEntity.ok(data);
+        }
+
     }
 }
