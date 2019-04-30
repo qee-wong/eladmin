@@ -14,7 +14,7 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 //@SpringBootApplication //写在同一个me.zhengjie的包名下可以识别写在其他包名下需手动指向
 @SpringBootApplication(scanBasePackages={"com","me.zhengjie"})
-@MapperScan("com.xiangxun.*.mapper")
+@MapperScan("com.*.*.mapper")
 @EnableTransactionManagement
 @EnableWebSocketMessageBroker
 public class AppRun {

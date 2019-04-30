@@ -68,7 +68,7 @@ public class UserTestDTO implements Serializable {
     private String biaoji;
 
 
-
+    private String sex;
 
 
 }

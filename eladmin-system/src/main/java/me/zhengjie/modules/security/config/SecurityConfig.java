@@ -114,7 +114,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //新增微信api验证
                 .antMatchers("/page").anonymous()
                 .antMatchers("/jspapi/**").anonymous()
-                .antMatchers("/api/roles/tree").anonymous()
                 // 所有请求都需要认证
                 .anyRequest().authenticated();
 

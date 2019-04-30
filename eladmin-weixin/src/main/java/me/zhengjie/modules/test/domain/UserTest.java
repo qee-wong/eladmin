@@ -85,5 +85,6 @@ public class UserTest implements Serializable {
     private String biaoji;
 
 
-
+    @Column(name = "sex")
+    private String sex;
 }

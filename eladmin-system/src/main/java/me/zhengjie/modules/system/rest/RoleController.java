@@ -41,7 +41,7 @@ public class RoleController {
      * @return
      */
     @GetMapping(value = "/roles/tree")
-    //@PreAuthorize("hasAnyRole('ADMIN','ROLES_ALL','USER_ALL','USER_SELECT')")
+    @PreAuthorize("hasAnyRole('ADMIN','ROLES_ALL','USER_ALL','USER_SELECT')")
     public ResponseEntity getRoleTree(){
         return new ResponseEntity(roleService.getRoleTree(),HttpStatus.OK);
     }

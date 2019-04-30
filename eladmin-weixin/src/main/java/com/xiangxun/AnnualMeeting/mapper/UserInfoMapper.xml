@@ -23,6 +23,25 @@
          (#{employeeid},#{phone},#{name},#{sign},#{name},#{avatarUrl},#{gender},#{openId},now(),#{signMessage});
     </insert>
 
+    <insert id="saveWxUser" parameterType="com.xiangxun.AnnualMeeting.bean.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user_test` (employeeid,phone,name,avatarUrl,sex,openId,updatetime)VALUES
+         (#{employeeid},#{phone},#{name},#{avatarUrl},#{sex},#{openId},now());
+    </insert>
+
+    <insert id="saveUser" parameterType="com.xiangxun.AnnualMeeting.bean.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user` (avatar,create_time,email,enabled,password,username)VALUES
+         (#{avatarUrl},now(),#{email},#{enabled},#{password},#{openId});
+    </insert>
+
+    <insert id="saveUserAndRole" parameterType="java.util.ArrayList" >
+        INSERT INTO users_roles(user_id,role_id) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.userId}, #{item.roleId})
+        </foreach>
+
+    </insert>
+
+
     <select id="getSignByuserId" parameterType="java.lang.String" resultType="com.xiangxun.AnnualMeeting.bean.UserInfo">
         select * FROM  user_test where openId = #{value} limit 1
     </select>
@@ -65,4 +84,7 @@
         order by id asc
     </select>
 
+    <select id="findAllRoles" resultType="java.util.Map">
+        select * from role;
+    </select>
 </mapper>

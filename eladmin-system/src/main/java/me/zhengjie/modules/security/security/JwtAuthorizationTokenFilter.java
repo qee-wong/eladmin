@@ -38,6 +38,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
         log.debug("processing authentication for '{}'", request.getRequestURL());
 
         final String requestHeader = request.getHeader(this.tokenHeader);
+        String ret = request.getRequestURI();
 
         String username = null;
         String authToken = null;

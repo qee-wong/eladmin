@@ -28,6 +28,30 @@ public class UserService
         return this.userInfoMapper.addUser(userInfo);
     }
 
+    /**
+     * 保存微信过来的用户
+     * @param userInfo
+     * @return
+     */
+    public Integer saveWxUser(UserInfo userInfo)
+    {
+        return this.userInfoMapper.saveWxUser(userInfo);
+    }
+
+    /**
+     * 根据微信过来的用户用户绑定本地用户和角色
+     * @param userInfo
+     * @return
+     */
+    public Integer saveUser(UserInfo userInfo,ArrayList list)
+    {
+        int ret =  this.userInfoMapper.saveUser(userInfo);
+        list.forEach((item)->{
+            ((Map)item).put("userId",userInfo.getId());
+        });
+        int retur =  this.userInfoMapper.saveUserAndRole(list);
+        return ret;
+    }
     public UserInfo getSignByuserId(String userid)
     {
         return this.userInfoMapper.getSignByuserId(userid);
@@ -76,5 +100,9 @@ public class UserService
     public Integer chongzhi()
     {
         return this.userInfoMapper.chongzhi();
+    }
+
+    public List<Map> findAllRoles(){
+        return this.userInfoMapper.findAllRoles();
     }
 }
