@@ -53,7 +53,7 @@ public class WxCpRestController
 //        list = this.userService.getAllPersonInfoByConditation();
         String url_p = req.getParameter("url");
         if(url_p !=null)
-            System.out.printf(url_p);
+            System.out.println(url_p);
 
         final WxCpService wxCpService = WxCpConfiguration.getCpService(agentId);
         WxJsapiSignature wxJsapiSignature = null;
