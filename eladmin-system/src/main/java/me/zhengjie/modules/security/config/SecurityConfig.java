@@ -95,11 +95,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers( HttpMethod.POST,"/auth/"+loginPath).permitAll()
                 .antMatchers("/websocket/**").permitAll()
-                .antMatchers("/druid/**").anonymous()
-
                 // 支付宝回调
                 .antMatchers("/api/aliPay/return").anonymous()
                 .antMatchers("/api/aliPay/notify").anonymous()
+
+                // 系统监控
+                .antMatchers("/actuator/**").anonymous()
 
                 // swagger start
                 .antMatchers("/swagger-ui.html").anonymous()
@@ -114,8 +115,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //新增微信api验证
                 .antMatchers("/page").anonymous()
                 .antMatchers("/jspapi/**").anonymous()
+               .antMatchers("/druid/**").permitAll()
                 // 所有请求都需要认证
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                // 防止iframe 造成跨域
+                .and().headers().frameOptions().disable();
 
         httpSecurity
                 .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

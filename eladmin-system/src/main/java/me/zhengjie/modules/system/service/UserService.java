@@ -3,7 +3,6 @@ package me.zhengjie.modules.system.service;
 import me.zhengjie.modules.system.domain.User;
 
 import me.zhengjie.modules.system.service.dto.UserDTO;
-import me.zhengjie.security.JwtUser;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -50,30 +49,30 @@ public interface UserService {
      * @param userName
      * @return
      */
-    @Cacheable(keyGenerator = "keyGenerator")
+    @Cacheable(key = "'loadUserByUsername:'+#p0")
     User findByName(String userName);
 
     /**
      * 修改密码
-     * @param jwtUser
+     * @param username
      * @param encryptPassword
      */
     @CacheEvict(allEntries = true)
-    void updatePass(JwtUser jwtUser, String encryptPassword);
+    void updatePass(String username, String encryptPassword);
 
     /**
      * 修改头像
-     * @param jwtUser
+     * @param username
      * @param url
      */
     @CacheEvict(allEntries = true)
-    void updateAvatar(JwtUser jwtUser, String url);
+    void updateAvatar(String username, String url);
 
     /**
      * 修改邮箱
-     * @param jwtUser
+     * @param username
      * @param email
      */
     @CacheEvict(allEntries = true)
-    void updateEmail(JwtUser jwtUser, String email);
+    void updateEmail(String username, String email);
 }
